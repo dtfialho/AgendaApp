@@ -1,0 +1,28 @@
+{
+    "bitwise": true,
+    "curly": true,
+    "eqeqeq": true,
+    "eqnull": true,
+    "immed": true,
+    "indent": 4,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "undef": true,
+    "strict": true,
+    "trailing": true,
+    "esnext": true,
+    "smarttabs": true,
+    "browser": true,
+    "jquery": true,
+    "node": true,
+    "undef" : true,
+    "browser" : true,
+    "globals": {
+        "app" : true,
+        "alert" : false,
+        "angular" : false,
+        "$" : false,
+        "$scope" : false
+    }
+}
