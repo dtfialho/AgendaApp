@@ -97,7 +97,8 @@ module.exports = function(grunt) {
                         "<%= dirs.js %>/filters/**/*.js",
                         "<%= dirs.js %>/services/**/*.js",
                         "<%= dirs.js %>/directives/**/*.js",
-                        "<%= dirs.js %>/controllers/**/*.js"
+                        "<%= dirs.js %>/controllers/**/*.js",
+                        "<%= dirs.js %>/libs/**/*.js"
                     ]
                     // Javascript para concatenar
                 }

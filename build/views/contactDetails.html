@@ -1,0 +1,44 @@
+<div class="contactModal">
+	<button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#details{{contact.contact_id}}">
+		<i class="fa fa-plus-circle" aria-hidden="true"></i>
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="details{{contact.contact_id}}" tabindex="-1" role="dialog" aria-labelledby="detailsLabel{{contact.contact_id}}">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="detailsLabel{{contact.contact_id}}">{{contact.name}}</h4>
+				</div>
+				<div class="modal-body">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td><strong>E-mail:</strong></td>
+								<td>{{contact.email}}</td>
+							</tr>
+							<tr>
+								<td><strong>Telefone:</strong></td>
+								<td>{{contact.phone}}</td>
+							</tr>
+							<tr>
+								<td><strong>Celular:</strong></td>
+								<td>{{contact.cellphone}}</td>
+							</tr>
+							<tr>
+								<td><strong>CPF:</strong></td>
+								<td>{{contact.cpf}}</td>
+							</tr>
+							<tr>
+								<td><strong>Data de Nascimento:</strong></td>
+								<td>{{contact.nascimento | date : "dd/MM/yyyy"}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+</div>
