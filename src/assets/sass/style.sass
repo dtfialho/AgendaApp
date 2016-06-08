@@ -7,12 +7,17 @@ body
 	background: #ddd
 
 #main
-	@extend .col-sm-6
-	@extend .col-sm-offset-3
-	margin-top: 20vh
-	background: #fff
-	padding: 30px 20px 50px
-	border-radius: 10px
+	@extend .col-md-6
+	@extend .col-md-offset-3
+	@extend .col-sm-10
+	@extend .col-sm-offset-1
+	margin-top: 15vh
+
+	&Content
+		background: #fff
+		padding: 30px 20px
+		border-radius: 10px
+		margin-bottom: 40px
 
 	h2
 		@extend .text-center
@@ -21,3 +26,11 @@ body
 
 .contactModal
 	display: inline-block
+
+.addContact
+	margin-top: 30px
+
+.form-contact
+	label
+		@extend .text-center
+		display: block

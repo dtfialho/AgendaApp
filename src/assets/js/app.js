@@ -16,7 +16,7 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpPr
 		templateUrl: 'views/main.html',
 		controller: 'MainCtrl'
 	}).
-	when('/contact/:id', {
+	when('/edit/:id', {
 		templateUrl: 'views/contact.html',
 		controller: 'ContactCtrl'
 	}).

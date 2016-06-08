@@ -16,10 +16,10 @@
 				<contact-modal contact="contact"></contact-modal>
 				<a href="#/edit/{{contact.contact_id}}" class="btn btn-xs btn-warning">
 					<i class="fa fa-pencil-square" aria-hidden="true"></i>
-				<a>
-				<a href="#/remove/{{contact.contact_id}}" class="btn btn-xs btn-danger">
+				</a>
+				<a class="btn btn-xs btn-danger">
 					<i class="fa fa-times-circle" aria-hidden="true"></i>
-				<a>
+				</a>
 			</td>
 		</tr>
 		<tr ng-if="contacts.length == 0">
@@ -27,3 +27,7 @@
 		</tr>
 	</tbody>
 </table>
+
+<div class="addContact">
+	<a href="#/add/" class="btn btn-lg btn-primary btn-block">Adicionar novo</a>
+</div>

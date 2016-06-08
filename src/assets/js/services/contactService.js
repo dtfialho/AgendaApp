@@ -13,7 +13,7 @@ app.factory('contactService', ['$http', function ($http) {
 				}
 			);
 		},
-		getContato: function(res, err, id) {
+		getContato: function(id, res, err) {
 			$http.get("http://localhost:8000/contact/"+id)
 			.success(res)
 			.error(
