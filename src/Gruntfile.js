@@ -6,6 +6,7 @@ module.exports = function(grunt) {
     // --------------------------
     require("load-grunt-tasks")(grunt);
     require("time-grunt")(grunt);
+    require("grunt-karma")(grunt);
 
 
     // Init Config
@@ -127,6 +128,22 @@ module.exports = function(grunt) {
                 dest: '<%= dirs.css %>style.css'
             }
 
+        },
+
+        // Configurações de testes para o Karma
+        karma: {
+            unit: {
+                options: {
+                    frameworks: ['jasmine'],
+                    singleRun: true,
+                    browsers: ['Chrome'],
+                    files: [
+                        'node_modules/angular/angular.min.js',
+                        'node_modules/angular-mocks/angular-mocks.js',
+                        '<%= dirs.js %>/tests/**/*.js'
+                    ]
+                }
+            }
         }
     };
 
@@ -139,9 +156,13 @@ module.exports = function(grunt) {
     // Start server and watch for changes
     grunt.registerTask("default", ["watch"]);
 
+    // Run tests
+    grunt.registerTask('test', ['jshint','karma']);
+
     // Run build
     grunt.registerTask("build", ["jshint", "uglify", "compass"]);
 
     // Aliases Tasks
     grunt.registerTask("b",  ["build"]);
+    grunt.registerTask("t",  ["test"]);
 };
