@@ -15,10 +15,14 @@ app.config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpPr
 	.when('/', {
 		templateUrl: 'views/main.html',
 		controller: 'MainCtrl'
-	}).
-	when('/edit/:id', {
+	})
+	.when('/edit/:id', {
 		templateUrl: 'views/contact.html',
 		controller: 'ContactCtrl'
-	}).
-	otherwise({ redirectTo: '/' });
+	})
+	.when('/add', {
+		templateUrl: 'views/contact.html',
+		controller: 'ContactCtrl'
+	})
+	.otherwise({ redirectTo: '/' });
 }]);

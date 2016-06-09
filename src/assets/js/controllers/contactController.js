@@ -1,11 +1,13 @@
 "use strict";
 
-app.controller('ContactCtrl', ['$scope', '$routeParams', 'contactService', '$location', function ($scope, $routeParams, contactService, $location) {
+app.controller('ContactCtrl', ['$scope', '$routeParams', 'contactService', '$location', '$filter', function ($scope, $routeParams, contactService, $location, $filter) {
 	$scope.contact = {};
 	$scope.newData = {};
+	$scope.required = "required";
 
 	$scope.$on("$viewContentLoaded", function(){
 		if($routeParams.id) {
+			$scope.required = false;
 			getContato();
 		}
 	});
@@ -17,12 +19,20 @@ app.controller('ContactCtrl', ['$scope', '$routeParams', 'contactService', '$loc
 				if(!res) {
 					$location.path("/");
 				}
-				$scope.contact = res;
+				$scope.newData = $scope.contact = res;
+				$scope.newData.nascimento = $filter('date')($scope.newData.nascimento, 'dd/MM/yyyy');
 			}
 		);
 	}
 
 	$scope.saveContact = function(newData) {
-		console.log(newData);
+		contactService.salvarContato(
+			newData,
+			function(res){
+				if(res == 'OK') {
+					$location.path("/");
+				}
+			}
+		);
 	};
 }]);

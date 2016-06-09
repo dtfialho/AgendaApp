@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "sqlite3": "^3.1.4"
   }

@@ -1,6 +1,7 @@
 var sqlite3 = require('sqlite3').verbose();
 var express = require('express');
 var api = express();
+var bodyParser = require('body-parser');
 var db = new sqlite3.Database('db');
 var port = 8000;
 
@@ -16,6 +17,8 @@ api.use(function(req, res, next) {
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   next();
 });
+api.use(bodyParser.json());
+api.use(bodyParser.urlencoded({ extended: true }));
 
 api.get('/', function(req, res){
 	res.send("Agenda API");
@@ -33,6 +36,30 @@ api.get('/contact/:id', function(req, res){
 		db.get("SELECT * FROM contacts WHERE contact_id = ?", id, function(err, row){
 			res.json(row);
 		});
+	}
+});
+
+api.post('/edit/', function(req, res){
+	var data = req.body.contact;
+	if(data) {
+		db.run(
+			"UPDATE contacts SET name = ?, phone = ?, cellphone = ?, cpf = ?, email = ?, nascimento = ? WHERE contact_id = ?",
+			[
+				data.name,
+				data.phone,
+				data.cellphone,
+				data.cpf,
+				data.email,
+				data.nascimento,
+				data.contact_id
+			],
+			function(error) {
+				if(error)
+					res.sendStatus(403);
+				else
+					res.sendStatus(200);
+			}
+		);
 	}
 });
 

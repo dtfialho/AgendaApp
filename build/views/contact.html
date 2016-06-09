@@ -1,26 +1,35 @@
 <form class="form-contact" ng-submit="saveContact(newData);">
-	<input type="hidden" ng-model="contact.contact_id" ng-if="contact.contact_id">
 	<div class="form-group">
 		<label for="name"><strong>Nome:</strong></label>
-		<input type="text" class="form-control" id="name" ng-model="newData.name" placeholder="Nome" required ng-value="contact.name">
+		<input type="text" name="name" class="form-control" id="name" ng-model="newData.name" placeholder="Nome" ng-required="{{required}}">
 	</div>
 	<div class="form-group">
 		<label for="email"><strong>E-mail:</strong></label>
-		<input type="text" class="form-control" id="email" ng-model="newData.email" placeholder="E-mail" required ng-value="contact.email">
+		<input type="text" name="email" class="form-control" id="email" ng-model="newData.email" placeholder="E-mail" ng-required="{{required}}">
 	</div>
 	<div class="form-group">
 		<label for="phone"><strong>Telefone:</strong></label>
-		<input type="text" class="form-control" id="phone" ng-model="newData.phone" placeholder="Telefone" required ng-value="contact.phone">
+		<input type="text" name="phone" class="form-control" id="phone" ng-model="newData.phone" placeholder="Telefone" ng-required="{{required}}">
 	</div>
 	<div class="form-group">
 		<label for="cellphone"><strong>Celular:</strong></label>
-		<input type="text" class="form-control" id="cellphone" ng-model="newData.cellphone" placeholder="Celular" ng-value="contact.cellphone">
+		<input type="text" name="cellphone" class="form-control" id="cellphone" ng-model="newData.cellphone" placeholder="Celular">
 	</div>
 	<div class="form-group">
 		<label for="cpf"><strong>CPF:</strong></label>
-		<input type="text" class="form-control" id="cpf" ng-model="newData.cpf" placeholder="CPF" required ng-value="contact.cpf">
+		<input type="text" name="cpf" class="form-control" id="cpf" ng-model="newData.cpf" placeholder="CPF" ng-required="{{required}}" cpf-mask>
+	</div>
+	<div class="form-group">
+		<label for="nascimento"><strong>Data de Nascimento:</strong></label>
+		<input type="text" name="nascimento" class="form-control" id="nascimento" ng-model="newData.nascimento" placeholder="Data de Nascimento" ng-required="{{required}}">
 	</div>
 	<div class="form-group">
 		<button class="btn btn-lg btn-primary btn-block">Salvar</button>
 	</div>
 </form>
+
+<div class="row">
+	<div class="col-xs-12 text-center">
+		<a href="#/">Voltar</a>
+	</div>
+</div>

@@ -23,6 +23,20 @@ app.factory('contactService', ['$http', function ($http) {
 					}
 				}
 			);
+		},
+		salvarContato: function(data, res, err) {
+			$http.post(
+				"http://localhost:8000/edit/",
+				{contact: data}
+			)
+			.success(res)
+			.error(
+				function(e) {
+					if(err) {
+						err(e);
+					}
+				}
+			);
 		}
 	};
 }]);
