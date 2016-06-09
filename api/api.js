@@ -36,12 +36,14 @@ api.get('/contact/:id', function(req, res){
 		db.get("SELECT * FROM contacts WHERE contact_id = ?", id, function(err, row){
 			res.json(row);
 		});
+	} else {
+		res.sendStatus(403);
 	}
 });
 
 api.post('/edit', function(req, res){
 	var data = req.body.contact;
-	if(data) {
+	if (data) {
 		db.run(
 			"UPDATE contacts SET name = ?, phone = ?, cellphone = ?, cpf = ?, email = ?, nascimento = ? WHERE contact_id = ?",
 			[
@@ -65,7 +67,7 @@ api.post('/edit', function(req, res){
 
 api.post('/add/', function(req, res){
 	var data = req.body.contact;
-	if(data) {
+	if (data) {
 		db.run(
 			"INSERT INTO contacts(name, phone, cellphone, cpf, email, nascimento) VALUES(?,?,?,?,?,?)",
 			[
@@ -83,6 +85,15 @@ api.post('/add/', function(req, res){
 					res.sendStatus(200);
 			}
 		);
+	}
+});
+
+api.get('/delete/:id', function(req, res){
+	var id = req.params.id;
+	if (id) {
+		db.run("DELETE FROM contacts WHERE contact_id = ?", id, function(){
+			res.sendStatus(200);
+		});
 	}
 });
 
