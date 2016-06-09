@@ -93,12 +93,12 @@ module.exports = function(grunt) {
                 files: {
                     // Seu script do projeto
                     "<%= dirs.jsfinal %>/site.min.js": [
+                        "<%= dirs.js %>/libs/**/*.js",
                         "<%= dirs.js %>/app.js",
                         "<%= dirs.js %>/filters/**/*.js",
                         "<%= dirs.js %>/services/**/*.js",
                         "<%= dirs.js %>/directives/**/*.js",
-                        "<%= dirs.js %>/controllers/**/*.js",
-                        "<%= dirs.js %>/libs/**/*.js"
+                        "<%= dirs.js %>/controllers/**/*.js"
                     ]
                     // Javascript para concatenar
                 }

@@ -43,6 +43,17 @@ app.factory('contactService', ['$http', function ($http) {
 					}
 				}
 			);
+		},
+		deletarContato: function(id, res, err) {
+			$http.get("http://localhost:8000/delete/"+id)
+			.success(res)
+			.error(
+				function(e) {
+					if(err) {
+						err(e);
+					}
+				}
+			);
 		}
 	};
 }]);
