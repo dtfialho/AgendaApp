@@ -39,7 +39,7 @@ api.get('/contact/:id', function(req, res){
 	}
 });
 
-api.post('/edit/', function(req, res){
+api.post('/edit', function(req, res){
 	var data = req.body.contact;
 	if(data) {
 		db.run(
@@ -52,6 +52,29 @@ api.post('/edit/', function(req, res){
 				data.email,
 				data.nascimento,
 				data.contact_id
+			],
+			function(error) {
+				if(error)
+					res.sendStatus(403);
+				else
+					res.sendStatus(200);
+			}
+		);
+	}
+});
+
+api.post('/add/', function(req, res){
+	var data = req.body.contact;
+	if(data) {
+		db.run(
+			"INSERT INTO contacts(name, phone, cellphone, cpf, email, nascimento) VALUES(?,?,?,?,?,?)",
+			[
+				data.name,
+				data.phone,
+				data.cellphone,
+				data.cpf,
+				data.email,
+				data.nascimento
 			],
 			function(error) {
 				if(error)

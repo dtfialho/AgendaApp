@@ -25,8 +25,14 @@ app.factory('contactService', ['$http', function ($http) {
 			);
 		},
 		salvarContato: function(data, res, err) {
+			var url = 'http://localhost:8000/';
+			if(data.contact_id) {
+				url += 'edit';
+			} else {
+				url += 'add';
+			}
 			$http.post(
-				"http://localhost:8000/edit/",
+				url,
 				{contact: data}
 			)
 			.success(res)

@@ -5,15 +5,15 @@
 	</div>
 	<div class="form-group">
 		<label for="email"><strong>E-mail:</strong></label>
-		<input type="text" name="email" class="form-control" id="email" ng-model="newData.email" placeholder="E-mail" ng-required="{{required}}">
+		<input type="email" name="email" class="form-control" id="email" ng-model="newData.email" placeholder="E-mail" ng-required="{{required}}">
 	</div>
 	<div class="form-group">
 		<label for="phone"><strong>Telefone:</strong></label>
-		<input type="text" name="phone" class="form-control" id="phone" ng-model="newData.phone" placeholder="Telefone" ng-required="{{required}}">
+		<input type="text" name="phone" class="form-control" id="phone" ng-model="newData.phone" placeholder="Telefone" ng-required="{{required}}" phone-mask mask-type="phone" maxlength="14">
 	</div>
 	<div class="form-group">
 		<label for="cellphone"><strong>Celular:</strong></label>
-		<input type="text" name="cellphone" class="form-control" id="cellphone" ng-model="newData.cellphone" placeholder="Celular">
+		<input type="text" name="cellphone" class="form-control" id="cellphone" ng-model="newData.cellphone" placeholder="Celular" phone-mask mask-type="cell" maxlength="15">
 	</div>
 	<div class="form-group">
 		<label for="cpf"><strong>CPF:</strong></label>
@@ -21,7 +21,7 @@
 	</div>
 	<div class="form-group">
 		<label for="nascimento"><strong>Data de Nascimento:</strong></label>
-		<input type="text" name="nascimento" class="form-control" id="nascimento" ng-model="newData.nascimento" placeholder="Data de Nascimento" ng-required="{{required}}">
+		<input type="text" name="nascimento" class="form-control" id="nascimento" ng-model="newData.nascimento" placeholder="Data de Nascimento" ng-required="{{required}}" date-mask>
 	</div>
 	<div class="form-group">
 		<button class="btn btn-lg btn-primary btn-block">Salvar</button>
