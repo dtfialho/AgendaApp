@@ -27,6 +27,7 @@
         "describe" : false,
         "it" : false,
         "expect" : false,
+        "jasmine" : false,
         "beforeEach" : false,
         "afterEach" : false,
         "inject" : false
