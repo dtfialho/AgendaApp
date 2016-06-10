@@ -3,9 +3,11 @@
 app.controller('MainCtrl', ['$scope', 'contactService', '$window', function ($scope, contactService, $window) {
 	$scope.contacts = [];
 
-	$scope.$on("$viewContentLoaded", function(){
-		loadContatos();
-	});
+	function loadContatos() {
+		contactService.getContatos().then(function(res){
+			$scope.contacts = res;
+		});
+	}
 
 	$scope.deletarContato = function(id) {
 		contactService.deletarContato(
@@ -16,11 +18,5 @@ app.controller('MainCtrl', ['$scope', 'contactService', '$window', function ($sc
 		);
 	};
 
-	function loadContatos() {
-		contactService.getContatos(
-			function(res){
-				$scope.contacts = res;
-			}
-		);
-	}
+	loadContatos();
 }]);

@@ -3,15 +3,9 @@
 app.factory('contactService', ['$http', function ($http) {
 	return {
 		getContatos: function(res, err) {
-			$http.get("http://localhost:8000/contacts/")
-			.success(res)
-			.error(
-				function(e) {
-					if(err) {
-						err(e);
-					}
-				}
-			);
+			return $http.get("http://localhost:8000/contacts/").then(function(res){
+				return res.data;
+			});
 		},
 		getContato: function(id, res, err) {
 			$http.get("http://localhost:8000/contact/"+id)
