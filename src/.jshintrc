@@ -23,6 +23,11 @@
         "angular" : false,
         "$" : false,
         "$scope" : false,
-        "swal" : false
+        "swal" : false,
+        "describe" : false,
+        "it" : false,
+        "expect" : false,
+        "beforeEach" : false,
+        "inject" : false
     }
 }

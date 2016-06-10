@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: "<%= jshint.all %>",
-                tasks: ["jshint", "uglify", "karma"]
+                tasks: ["jshint", "uglify"]
             },
 
             files: [
@@ -137,10 +137,18 @@ module.exports = function(grunt) {
                 options: {
                     frameworks: ['jasmine'],
                     singleRun: false,
-                    browsers: ['Chrome'],
+                    browsers: ['PhantomJS'],
+                    colors: true,
+                    logLevel: grunt.LOG_ERROR,
                     files: [
                         'node_modules/angular/angular.min.js',
+                        'node_modules/angular-route/angular-route.min.js',
                         'node_modules/angular-mocks/angular-mocks.js',
+                        '<%= dirs.js %>/app.js',
+                        '<%= dirs.js %>/filters/**/*.js',
+                        '<%= dirs.js %>/services/**/*.js',
+                        '<%= dirs.js %>/directives/**/*.js',
+                        '<%= dirs.js %>/controllers/**/*.js',
                         '<%= dirs.js %>/tests/**/*.js'
                     ]
                 }
