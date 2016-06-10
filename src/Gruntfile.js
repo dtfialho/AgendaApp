@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: "<%= jshint.all %>",
-                tasks: ["jshint", "uglify"]
+                tasks: ["jshint", "uglify", "karma"]
             },
 
             files: [
@@ -76,6 +76,7 @@ module.exports = function(grunt) {
             },
             all: [
                 "Gruntfile.js",
+                "<%= dirs.js %>/tests/**/*.js",
                 "<%= dirs.js %>/filters/**/*.js",
                 "<%= dirs.js %>/services/**/*.js",
                 "<%= dirs.js %>/directives/**/*.js",
@@ -135,7 +136,7 @@ module.exports = function(grunt) {
             unit: {
                 options: {
                     frameworks: ['jasmine'],
-                    singleRun: true,
+                    singleRun: false,
                     browsers: ['Chrome'],
                     files: [
                         'node_modules/angular/angular.min.js',
