@@ -155,6 +155,19 @@ describe('ContactCtrl', function(){
 
 		// Verifica o template e o controller atual
 		expect($route.current.templateUrl).toBe('views/main.html');
-		expect($route.current.controller).toBe('MainCtrl');		
+		expect($route.current.controller).toBe('MainCtrl');
+	}));
+});
+
+describe("Teste das diretivas", function(){
+	beforeEach(module("AgendaApp"));
+	
+	it("A diretiva cpfMask deve retornar uma string com 15 caracteres", inject(function($compile, $rootScope){
+		var element;
+		element = angular.element('<input type="text" value="" cpf-mask />');
+		$compile(element);
+		element.attr("value", "99999999999");
+		element.click();
+		console.log(element);
 	}));
 });

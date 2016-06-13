@@ -140,6 +140,7 @@ module.exports = function(grunt) {
                     logLevel: grunt.LOG_INFO,
                     files: [
                         'node_modules/jquery/dist/jquery.min.js',
+                        'node_modules/jquery-masked-input/dist/jquery.masked-input.js',
                         'node_modules/angular/angular.min.js',
                         'node_modules/angular-route/angular-route.min.js',
                         'node_modules/angular-mocks/angular-mocks.js',
