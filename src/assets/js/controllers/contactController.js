@@ -14,7 +14,9 @@ app.controller('ContactCtrl', ['$scope', '$routeParams', 'contactService', '$loc
 
 	$scope.getContato = function() {
 		contactService.getContato($routeParams.id).then(function(res){
-			$scope.contact = res;
+			$scope.newData = $scope.contact = res;
+		}, function(err) {
+			$location.path("/");
 		});
 	};
 

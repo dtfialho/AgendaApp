@@ -142,5 +142,19 @@ describe('ContactCtrl', function(){
 			cpf: '123.456.789-12',
 			nascimento: '21/04/1990'
 		});
+
+		// Inicialmente não tem nenhuma rota setada
+		$location.path('/edit/2');
+		$httpBackend.whenGET("views/main.html").respond(200);
+		$rootScope.$digest();
+
+		// Seta o mock para retornar os dados (dessa vez retornará um erro)
+		$httpBackend.whenGET("http://localhost:8000/contact/2").respond(403, {'error':'invalid id'});
+		$scope.getContato();
+		$httpBackend.flush();
+
+		// Verifica o template e o controller atual
+		expect($route.current.templateUrl).toBe('views/main.html');
+		expect($route.current.controller).toBe('MainCtrl');		
 	}));
 });

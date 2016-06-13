@@ -34,7 +34,11 @@ api.get('/contact/:id', function(req, res){
 	if (req.params.id) {
 		var id = req.params.id;
 		db.get("SELECT * FROM contacts WHERE contact_id = ?", id, function(err, row){
-			res.json(row);
+			if(!row) {
+				res.sendStatus(403);
+			} else {
+				res.json(row);				
+			}
 		});
 	} else {
 		res.sendStatus(403);
