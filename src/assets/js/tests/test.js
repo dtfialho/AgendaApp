@@ -95,7 +95,52 @@ describe('ContactCtrl', function(){
 		expect($scope.contact).toEqual({});
 	});
 
+	// Verifica se o service esta definido
 	it("contactService deve estar definido", function(){
 		expect(contactService).toBeDefined();
 	});
+
+	// Teste para verificar o o funcionamento da função getContato
+	it("Testando se a função getContato está funcionando corretamente", inject(function($location, $route, $httpBackend){
+		// Inicialmente não tem nenhuma rota setada
+		expect($route.current).toBeUndefined();
+		// Seta a rota para /edit/1
+		$location.path('/edit/1');
+		// Método para simular o load do template
+		$httpBackend.whenGET("views/contact.html").respond(200);
+		// Carrega o escopo com a view e os dados do escopo
+		$rootScope.$digest();
+
+		// Verifica o template e o controller atual
+		expect($route.current.templateUrl).toBe('views/contact.html');
+		expect($route.current.controller).toBe('ContactCtrl');
+
+		// Limpa as requisições do mock
+		$httpBackend.flush();
+
+		// Seta o mock para retornar os dados
+		$httpBackend.whenGET("http://localhost:8000/contact/1").respond({
+			contact_id: 1,
+			name: 'Diego Teixeira Fialho',
+			email: 'diego.tfialho@gmail.com',
+			phone: '(24) 2280-6445',
+			cellphone: '(24) 98858-8704',
+			cpf: '142.770.907-61',
+			nascimento: '21/04/1990'
+		});
+		// Chama o método getContato e limpa as requisições
+		$scope.getContato();
+		$httpBackend.flush();
+
+		// Verifica se os dados foram retornados corretamente
+		expect($scope.contact).toEqual({
+			contact_id: 1,
+			name: 'Diego Teixeira Fialho',
+			email: 'diego.tfialho@gmail.com',
+			phone: '(24) 2280-6445',
+			cellphone: '(24) 98858-8704',
+			cpf: '142.770.907-61',
+			nascimento: '21/04/1990'
+		});
+	}));
 });

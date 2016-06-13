@@ -148,8 +148,14 @@ module.exports = function(grunt) {
                         '<%= dirs.js %>/services/**/*.js',
                         '<%= dirs.js %>/directives/**/*.js',
                         '<%= dirs.js %>/controllers/**/*.js',
-                        '<%= dirs.js %>/tests/**/*.js'
-                    ]
+                        '<%= dirs.js %>/tests/**/*.js',
+                        '<%= dirs.base %>/index.html',
+                        '<%= dirs.views %>/**/*.html'
+                    ],
+                    preprocessors: {
+                        '<%= dirs.base %>/index.html': 'ng-html2js',
+                        '<%= dirs.views %>/**/*.html': 'ng-html2js'
+                    },
                 }
             }
         }

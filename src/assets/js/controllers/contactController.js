@@ -8,22 +8,15 @@ app.controller('ContactCtrl', ['$scope', '$routeParams', 'contactService', '$loc
 	$scope.$on("$viewContentLoaded", function(){
 		if($routeParams.id) {
 			$scope.required = false;
-			getContato();
+			$scope.getContato();
 		}
 	});
 
-	function getContato() {
-		contactService.getContato(
-			$routeParams.id,
-			function(res){
-				if(!res) {
-					$location.path("/");
-				}
-				$scope.newData = $scope.contact = res;
-				$scope.newData.nascimento = $filter('date')($scope.newData.nascimento, 'dd/MM/yyyy');
-			}
-		);
-	}
+	$scope.getContato = function() {
+		contactService.getContato($routeParams.id).then(function(res){
+			$scope.contact = res;
+		});
+	};
 
 	$scope.saveContact = function(newData) {
 		contactService.salvarContato(
