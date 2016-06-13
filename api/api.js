@@ -8,7 +8,7 @@ var port = 8000;
 // Uncomment to initialize the database
 // db.serialize(function(){
 // 	db.run("CREATE TABLE IF NOT EXISTS contacts(contact_id integer primary key autoincrement, name text, phone text, cellphone text, cpf text, email text, nascimento date)");
-// 	db.run("INSERT INTO contacts(name, phone, cellphone, cpf, email, nascimento) VALUES('Diego Teixeira Fialho','(24) 2280-6445', '(24) 98858-8704', '142.770.907-61', 'diego.tfialho@gmail.com', '1990-04-21')");
+// 	db.run("INSERT INTO contacts(name, phone, cellphone, cpf, email, nascimento) VALUES('Diego Teixeira Fialho','(22) 2222-2222', '(99) 99999-9999', '123.456.789-12', 'diego.tfialho@gmail.com', '1990-04-21')");
 // });
 
 api.use(function(req, res, next) {

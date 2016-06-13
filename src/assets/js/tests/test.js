@@ -33,9 +33,9 @@ describe('MainCtrl', function(){
 				contact_id: 1,
 				name: 'Diego Teixeira Fialho',
 				email: 'diego.tfialho@gmail.com',
-				phone: '(24) 2280-6445',
-				cellphone: '(24) 98858-8704',
-				cpf: '142.770.907-61',
+				phone: '(22) 2222-2222',
+				cellphone: '(99) 99999-9999',
+				cpf: '123.456.789-12',
 				nascimento: '21/04/1990'
 			},
 			{
@@ -44,7 +44,7 @@ describe('MainCtrl', function(){
 				email: 'diego.tfialho@gmail.com',
 				phone: '(24) 2222-2222',
 				cellphone: '(24) 99999-9999',
-				cpf: '142.770.907-61',
+				cpf: '123.456.789-12',
 				nascimento: '21/04/1990'
 			}
 		]);
@@ -61,9 +61,9 @@ describe('MainCtrl', function(){
 				contact_id: 1,
 				name: 'Diego Teixeira Fialho',
 				email: 'diego.tfialho@gmail.com',
-				phone: '(24) 2280-6445',
-				cellphone: '(24) 98858-8704',
-				cpf: '142.770.907-61',
+				phone: '(22) 2222-2222',
+				cellphone: '(99) 99999-9999',
+				cpf: '123.456.789-12',
 				nascimento: '21/04/1990'
 			});
 	}));
@@ -123,9 +123,9 @@ describe('ContactCtrl', function(){
 			contact_id: 1,
 			name: 'Diego Teixeira Fialho',
 			email: 'diego.tfialho@gmail.com',
-			phone: '(24) 2280-6445',
-			cellphone: '(24) 98858-8704',
-			cpf: '142.770.907-61',
+			phone: '(22) 2222-2222',
+			cellphone: '(99) 99999-9999',
+			cpf: '123.456.789-12',
 			nascimento: '21/04/1990'
 		});
 		// Chama o método getContato e limpa as requisições
@@ -137,9 +137,9 @@ describe('ContactCtrl', function(){
 			contact_id: 1,
 			name: 'Diego Teixeira Fialho',
 			email: 'diego.tfialho@gmail.com',
-			phone: '(24) 2280-6445',
-			cellphone: '(24) 98858-8704',
-			cpf: '142.770.907-61',
+			phone: '(22) 2222-2222',
+			cellphone: '(99) 99999-9999',
+			cpf: '123.456.789-12',
 			nascimento: '21/04/1990'
 		});
 	}));
