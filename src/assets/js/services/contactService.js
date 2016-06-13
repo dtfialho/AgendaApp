@@ -2,21 +2,15 @@
 
 app.factory('contactService', ['$http', function ($http) {
 	return {
-		getContatos: function(res, err) {
+		getContatos: function() {
 			return $http.get("http://localhost:8000/contacts/").then(function(res){
 				return res.data;
 			});
 		},
-		getContato: function(id, res, err) {
-			$http.get("http://localhost:8000/contact/"+id)
-			.success(res)
-			.error(
-				function(e) {
-					if(err) {
-						err(e);
-					}
-				}
-			);
+		getContato: function(id) {
+			return $http.get("http://localhost:8000/contact/"+id).then(function(res){
+				return res.data;
+			});
 		},
 		salvarContato: function(data, res, err) {
 			var url = 'http://localhost:8000/';
