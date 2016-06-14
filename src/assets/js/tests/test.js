@@ -159,6 +159,7 @@ describe('ContactCtrl', function(){
 
 describe("Teste das diretivas", function(){
 	beforeEach(module("AgendaApp"));
+	beforeEach(module('views/contactDetails.html'));
 	
 	it("Verifica a diretiva cpfMask", inject(function($compile, $rootScope){
 		// Inicia as variáveis globais
@@ -250,6 +251,42 @@ describe("Teste das diretivas", function(){
 		scope = $rootScope.$new();
 		MainCtrl = $controller('MainCtrl', {$rootScope: $rootScope, $scope: scope});
 
-		console.log(scope);
+		$httpBackend.whenGET('http://localhost:8000/contacts/').respond([
+			{
+				contact_id: 1,
+				name: 'Diego Teixeira Fialho',
+				email: 'diego.tfialho@gmail.com',
+				phone: '(22) 2222-2222',
+				cellphone: '(99) 99999-9999',
+				cpf: '123.456.789-12',
+				nascimento: '21/04/1990'
+			},
+			{
+				contact_id: 2,
+				name: 'Diego T. Fialho',
+				email: 'diego.tfialho@gmail.com',
+				phone: '(24) 2222-2222',
+				cellphone: '(24) 99999-9999',
+				cpf: '123.456.789-12',
+				nascimento: '21/04/1990'
+			}
+		]);
+
+		element = angular.element('<div ng-controller="MainCtrl"><contact-modal contact="contacts[0]"></contact-modal></div>');
+		$compile(element)(scope);
+		scope.$apply();
+		scope.$digest();
+
+		scope.getContatos();
+		$httpBackend.flush();
+
+		expect(element.find(".modal").html()).not.toEqual("");
+		expect(element.find(".modal .contactName").html()).toEqual("Diego Teixeira Fialho");
+		expect(element.find(".modal .contactEmail").html()).toEqual("diego.tfialho@gmail.com");
+		expect(element.find(".modal .contactPhone").html()).toEqual("(22) 2222-2222");
+		expect(element.find(".modal .contactCellphone").html()).toEqual("(99) 99999-9999");
+		expect(element.find(".modal .contactCpf").html()).toEqual("123.456.789-12");
+		expect(element.find(".modal .contactNascimento").html()).toEqual("21/04/1990");
+		
 	}));
 });

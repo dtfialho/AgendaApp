@@ -9,30 +9,30 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="detailsLabel{{::contact.contact_id}}">{{::contact.name}}</h4>
+					<h4 class="modal-title contactName" id="detailsLabel{{::contact.contact_id}}">{{::contact.name}}</h4>
 				</div>
 				<div class="modal-body">
 					<table class="table table-bordered">
 						<tbody>
 							<tr>
 								<td><strong>E-mail:</strong></td>
-								<td>{{::contact.email}}</td>
+								<td class="contactEmail">{{::contact.email}}</td>
 							</tr>
 							<tr>
 								<td><strong>Telefone:</strong></td>
-								<td>{{::contact.phone}}</td>
+								<td class="contactPhone">{{::contact.phone}}</td>
 							</tr>
 							<tr>
 								<td><strong>Celular:</strong></td>
-								<td>{{::contact.cellphone}}</td>
+								<td class="contactCellphone">{{::contact.cellphone}}</td>
 							</tr>
 							<tr>
 								<td><strong>CPF:</strong></td>
-								<td>{{::contact.cpf}}</td>
+								<td class="contactCpf">{{::contact.cpf}}</td>
 							</tr>
 							<tr>
 								<td><strong>Data de Nascimento:</strong></td>
-								<td>{{::contact.nascimento | date : "dd/MM/yyyy"}}</td>
+								<td class="contactNascimento">{{::contact.nascimento | date : "dd/MM/yyyy"}}</td>
 							</tr>
 						</tbody>
 					</table>
