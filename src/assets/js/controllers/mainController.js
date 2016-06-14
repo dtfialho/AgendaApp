@@ -3,9 +3,11 @@
 app.controller('MainCtrl', ['$scope', 'contactService', '$window', function ($scope, contactService, $window) {
 	$scope.contacts = [];
 
-	contactService.getContatos().then(function(res){
-		$scope.contacts = res;
-	});
+	$scope.getContatos = function() {
+		contactService.getContatos().then(function(res){
+			$scope.contacts = res;
+		});
+	};
 
 	$scope.deletarContato = function(id) {
 		contactService.deletarContato(
@@ -15,4 +17,6 @@ app.controller('MainCtrl', ['$scope', 'contactService', '$window', function ($sc
 			}
 		);
 	};
+
+	$scope.getContatos();
 }]);

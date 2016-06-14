@@ -13,6 +13,9 @@
     "npm": ">=1.1.0"
   },
   "devDependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "sqlite3": "^3.1.4",
     "angular": "^1.5.6",
     "angular-mocks": "^1.5.6",
     "angular-route": "^1.5.6",

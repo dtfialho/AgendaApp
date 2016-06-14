@@ -17,16 +17,16 @@ module.exports = function(grunt) {
         // Dirs
         dirs: {
             // PATHS SRC
-            js: "assets/js",
-            sass: "assets/sass",
+            js: "src/assets/js",
+            sass: "src/assets/sass",
 
             // BUILD PATHS
-            base: '../build',
-            views: '../build/views',
+            base: 'build',
+            views: 'build/views',
 
             // ASSETS build
-            css: "../build/css",
-            jsfinal: "../build/js"
+            css: "build/css",
+            jsfinal: "build/js"
         },
 
         // Metadata

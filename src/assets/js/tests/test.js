@@ -49,9 +49,7 @@ describe('MainCtrl', function(){
 			}
 		]);
 		// Chama o método e armazena o retorno
-		contactService.getContatos().then(function(res){
-			$scope.contacts = res;
-		});
+		$scope.getContatos();
 		// Limpa as requisições do mock
 		$httpBackend.flush();
 		// Testa se foi retornado
@@ -245,5 +243,13 @@ describe("Teste das diretivas", function(){
 		scope.$digest();
 		scope.$apply();
 		expect(element.find("input").val()).toEqual("");
+	}));
+
+	it("Verifica se a diretiva do contactModal está funcionando", inject(function($compile, $rootScope, $controller, $httpBackend){
+		var element, scope, MainCtrl;
+		scope = $rootScope.$new();
+		MainCtrl = $controller('MainCtrl', {$rootScope: $rootScope, $scope: scope});
+
+		console.log(scope);
 	}));
 });
