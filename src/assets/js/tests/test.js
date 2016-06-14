@@ -162,12 +162,88 @@ describe('ContactCtrl', function(){
 describe("Teste das diretivas", function(){
 	beforeEach(module("AgendaApp"));
 	
-	it("A diretiva cpfMask deve retornar uma string com 15 caracteres", inject(function($compile, $rootScope){
-		var element;
-		element = angular.element('<input type="text" value="" cpf-mask />');
-		$compile(element);
-		element.attr("value", "99999999999");
-		element.click();
-		console.log(element);
+	it("Verifica a diretiva cpfMask", inject(function($compile, $rootScope){
+		// Inicia as variáveis globais
+		var element, scope;
+		scope = $rootScope.$new();
+		// Cria o elemento e compila
+		element = angular.element('<div><input type="text" value="" ng-model="newData.cpf" cpf-mask /></div>');
+		$compile(element)(scope);
+		// Insere o valor no input e dispara o evento blur para aplicar a máscara
+		element.find("input").val("99999999999").triggerHandler("blur");
+		scope.$digest();
+		scope.$apply();
+		// Testa se o retorno foi o certo
+		expect(element.find("input").val()).toEqual("999.999.999-99");
+	}));
+
+	it("Verifica a diretiva dateMask", inject(function($compile, $rootScope){
+		// Inicia as variáveis globais
+		var element, scope;
+		scope = $rootScope.$new();
+		// Cria o elemento e compila
+		element = angular.element('<div><input type="text" value="" ng-model="newData.nascimento" date-mask /></div>');
+		$compile(element)(scope);
+		// Insere o valor no input e dispara o evento blur para aplicar a máscara
+		element.find("input").val("21041990").triggerHandler("blur");
+		scope.$digest();
+		scope.$apply();
+		// Testa se o retorno foi o certo
+		expect(element.find("input").val()).toEqual("21/04/1990");
+
+		// Passa um valor não aceito para verificar se vai retornar algo
+		element.find("input").val("99999999").triggerHandler("blur");
+		scope.$digest();
+		scope.$apply();
+		expect(element.find("input").val()).toEqual("");
+	}));
+
+	it("Verifica a diretiva phoneMask", inject(function($compile, $rootScope){
+		// Inicia as variáveis globais
+		var element, scope;
+		scope = $rootScope.$new();
+		// Cria o elemento e compila
+		element = angular.element('<div><input type="text" value="" ng-model="newData.phone" phone-mask /></div>');
+		$compile(element)(scope);
+		// Insere o valor no input e dispara o evento blur para aplicar a máscara
+		element.find("input").val("9999999999").triggerHandler("blur");
+		scope.$digest();
+		scope.$apply();
+		expect(element.find("input").val()).toEqual("(99) 9999-9999");
+
+		// Cria o elemento passando o tipo da máscara e compila
+		element = angular.element('<div><input type="text" value="" ng-model="newData.phone" phone-mask mask-type="phone" /></div>');
+		$compile(element)(scope);
+		// Insere o valor no input e dispara o evento blur para aplicar a máscara
+		element.find("input").val("9999999999").triggerHandler("blur");
+		scope.$digest();
+		scope.$apply();
+		expect(element.find("input").val()).toEqual("(99) 9999-9999");
+
+		// Cria o elemento passando o tipo da máscara como celular e compila
+		element = angular.element('<div><input type="text" value="" ng-model="newData.cellphone" phone-mask mask-type="cell" /></div>');
+		$compile(element)(scope);
+		// Insere o valor no input e dispara o evento focus para aplicar a máscara
+		element.find("input").val("9999999999").triggerHandler("blur");
+		element.find("input").triggerHandler("focusout");
+		scope.$digest();
+		scope.$apply();
+		expect(element.find("input").val()).toEqual("(99) 9999-9999");
+
+		// Passa um número com 11 dígitos
+		element.find("input").triggerHandler("focus");
+		element.find("input").val("99999999999").triggerHandler("blur");
+		element.find("input").triggerHandler("focusout");
+		scope.$digest();
+		scope.$apply();
+		expect(element.find("input").val()).toEqual("(99) 99999-9999");
+
+		// Passa um número com menos de 10 dígitos e testa
+		element.find("input").triggerHandler("focus");
+		element.find("input").val("99999999").triggerHandler("blur");
+		element.find("input").triggerHandler("focusout");
+		scope.$digest();
+		scope.$apply();
+		expect(element.find("input").val()).toEqual("");
 	}));
 });
