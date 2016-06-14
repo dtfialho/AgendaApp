@@ -251,6 +251,7 @@ describe("Teste das diretivas", function(){
 		scope = $rootScope.$new();
 		MainCtrl = $controller('MainCtrl', {$rootScope: $rootScope, $scope: scope});
 
+		// Gera os dados dos contatos para passar para o escopo da diretiva
 		$httpBackend.whenGET('http://localhost:8000/contacts/').respond([
 			{
 				contact_id: 1,
@@ -272,14 +273,17 @@ describe("Teste das diretivas", function(){
 			}
 		]);
 
+		// Gerao elemento e compila
 		element = angular.element('<div ng-controller="MainCtrl"><contact-modal contact="contacts[0]"></contact-modal></div>');
 		$compile(element)(scope);
 		scope.$apply();
 		scope.$digest();
 
+		// Chama o método para armazenar no escopo do controller
 		scope.getContatos();
 		$httpBackend.flush();
 
+		// Testa se retornou tudo corretamente
 		expect(element.find(".modal").html()).not.toEqual("");
 		expect(element.find(".modal .contactName").html()).toEqual("Diego Teixeira Fialho");
 		expect(element.find(".modal .contactEmail").html()).toEqual("diego.tfialho@gmail.com");
